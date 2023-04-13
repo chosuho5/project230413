@@ -8,21 +8,34 @@ public class PlayerController : MonoBehaviour
 
     private bool isMove;
 
+    [SerializeField]
+    private GameObject projectilePrefab;
+
+    public Weapon playerWeapon;
     public bool MoveInput
     {
         set
         {
             isMove = value;
             if (isMove)
-                StartCoroutine("TryAttack");
+                playerWeapon.FIRING = true;
             else
-                StopCoroutine("TryAttack");
+                playerWeapon.FIRING = false;
         }
     }
 
     private void Awake()
     {
         isMove = false;
+
+        if (!TryGetComponent<Weapon>(out playerWeapon))
+        {
+            Debug.Log("Weapon 컴포넌트를 찾아오는데 실패 했습니다.");
+        }
+        else
+        {
+            playerWeapon.Init(projectilePrefab, 0.1f);  // 총알을 발사하는 속도
+        }
     }
 
     private Vector3 pos;
@@ -42,17 +55,6 @@ public class PlayerController : MonoBehaviour
             pos.y = Mathf.Clamp(pos.y, clampMin.y, clampMax.y);
             pos.z = transform.position.z;   // 캐릭터 z좌표를 그대로 유지한다
             transform.position = pos;
-        }
-    }
-
-    [SerializeField]
-    private GameObject projectilePrefab;
-    private IEnumerator TryAttack()
-    {
-        while(true)
-        {
-            Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);
         }
     }
 }
