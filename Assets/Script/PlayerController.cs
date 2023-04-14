@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject projectilePrefab;
+    [SerializeField]
+    private float attackRate;
 
     public Weapon playerWeapon;
     public bool MoveInput
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            playerWeapon.Init(projectilePrefab, 0.1f);  // 총알을 발사하는 속도
+            playerWeapon.Init(projectilePrefab, attackRate);  // 총알을 발사하는 속도
         }
     }
 

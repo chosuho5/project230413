@@ -12,9 +12,15 @@ public class PoolLabel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    // 오브젝트 풀에 반환될때처리.
     public virtual void Push()
     {
         pool.Push(this);
+    }
+    // 오브젝트 풀에서 꺼내서 쓸때 초기화.
+    public virtual void InitInfo()
+    {
+
     }
 
 }

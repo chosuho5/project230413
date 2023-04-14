@@ -45,6 +45,7 @@ public class ObjectPool : MonoBehaviour
 
         PoolLabel obj = poolStack.Pop();
         obj.gameObject.SetActive(true);
+        obj.InitInfo(); // 오브젝트를 꺼낼때마다 오브젝트 초기화
         objActiveCount++;
         return obj.gameObject;
     }
