@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if(isMove)
         {
             // 캐릭터 이동
-            Debug.Log("이동중...");
+            //Debug.Log("이동중...");
             pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.x = Mathf.Clamp(pos.x, clampMin.x, clampMax.x);
             pos.y = Mathf.Clamp(pos.y, clampMin.y, clampMax.y);

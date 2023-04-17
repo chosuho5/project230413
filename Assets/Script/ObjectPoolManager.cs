@@ -16,6 +16,9 @@ enum objectType
     objT_Enemy_03,
     objT_Efeect_01,
     objT_Efeect_02,
+    objT_Meteorite_01,  // 경고 라인
+    objT_Meteorite_02,  // 떨어지는 메테오
+    objT_DropItem_01,
 };
 
 public class ObjectPoolManager : MonoBehaviour

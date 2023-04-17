@@ -42,7 +42,24 @@ public class EnemyChar : PoolLabel
         //이펙트 
         spawnEffectObj = ObjectPoolManager.Inst.pools[(int)objectType.objT_Efeect_01].Pop();
         spawnEffectObj.transform.position = transform.position; // 이펙트를 자기 자신의 위치로 끌어들임
+
+        DropItem();
+
+
         Push();
+    }
+
+    private GameObject spawnObj;
+    private int i;
+
+    private void DropItem()
+    {
+        for (i = 0; i < 7; i++)
+        {
+            spawnObj = ObjectPoolManager.Inst.pools[(int)objectType.objT_DropItem_01].Pop();
+            spawnObj.transform.position = transform.position;
+            spawnObj.transform.rotation = transform.rotation;
+        }
     }
 
 
